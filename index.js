@@ -4,7 +4,7 @@ const generateReactStatelessComponent = require('./generateReactStatelessCompone
 const generateReactContainerComponent = require('./generateReactContainerComponent')
 
 program
-  .version('0.0.1')
+  .version('0.0.1', '-v, --version')
   .description('Typescript based react component generator cli')
 
 program
