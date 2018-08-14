@@ -15,7 +15,7 @@ module.exports = (name) => {
 
       const componentName = name.slice(name.lastIndexOf('/') + 1)
 
-      const componentFile = `${name}/I${componentName}State.tsx`
+      const componentFile = `${name}/${componentName}.tsx`
       const propsInterfaceFile = `${name}/I${componentName}Props.ts`
       const stateInterfaceFile = `${name}/I${componentName}State.ts`
       const stylesFile = `${name}/${componentName}.module.scss`
