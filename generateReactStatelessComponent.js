@@ -54,7 +54,7 @@ const ${componentName}: React.SFC<I${componentName}Props> = (props) => {
       <h3>${componentName} Stateless Component!</h3>
     </div>
   );
-}
+};
 
 export default ${componentName};
 `
