@@ -72,14 +72,17 @@ class ${componentName} extends React.Component<I${componentName}Props, I${compon
 }
 
 export default ${componentName};
+
 `
 
 const stateInterface = (componentName) =>
   `export interface I${componentName}State {}
+
 `
 
 const propsInterface = (componentName) =>
   `export interface I${componentName}Props {}
+
 `
 
 const styles = (componentName) =>

@@ -16,6 +16,7 @@ module.exports = (name) => {
       const componentName = name.slice(name.lastIndexOf('/') + 1)
 
       const componentFile = `${name}/${componentName}.tsx`
+      const containerFile = `${name}/${componentName}Container.ts`
       const propsInterfaceFile = `${name}/I${componentName}Props.ts`
       const stateInterfaceFile = `${name}/I${componentName}State.ts`
       const stylesFile = `${name}/${componentName}.module.scss`
@@ -27,6 +28,14 @@ module.exports = (name) => {
         else
           successLog(`'${componentFile}' created.`)
       })
+
+      fs.appendFile(containerFile, container(componentName), (err) => {
+        if (err)
+          errorLog(err.message)
+        else
+          successLog(`'${containerFile}' created.`)
+      })
+
 
       fs.appendFile(stateInterfaceFile, stateInterface(componentName), (err) => {
         if (err)
@@ -82,28 +91,46 @@ class ${componentName} extends React.Component<
   }
 }
 
-const mapStateToProps = (state) => {
-  return {}
-}
+export default ${componentName};
 
-export default connect<
-  I${componentName}StateProps,
-  I${componentName}DispatchProps,
-  I${componentName}Props
-  >(
-    mapStateToProps,
-    {}
-  )(${componentName});
+`
+
+const container = (componentName) =>
+  ` import { MapStateToPropsParam, MapDispatchToPropsParam, connect } from "react-redux";
+import IState from "path-to-redux-state-interface";
+import ${componentName} from "./${componentName}";
+import { I${componentName}Props, I${componentName}DispatchProps, I${componentName}StateProps } from "./I${componentName}Props";
+import { ThunkDispatch } from "redux-thunk";
+import { AnyAction } from "redux";
+
+const mapStateToProps: MapStateToPropsParam<I${componentName}StateProps, I${componentName}Props> = (state: IState) => {
+  return {};
+};
+
+const mapDispatchToProps: MapDispatchToPropsParam<I${componentName}DispatchProps, I${componentName}Props> =
+  (dispatch: ThunkDispatch<IState, undefined, AnyAction>) => ({
+    // dispatch actions
+  });
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(${componentName});
+
 `
 
 const stateInterface = (componentName) =>
   `export interface I${componentName}State {}
+
 `
 
 const propsInterface = (componentName) =>
   `export interface I${componentName}Props {}
+
 export interface I${componentName}StateProps {}
+
 export interface I${componentName}DispatchProps {}
+
 `
 
 const styles = (componentName) =>
