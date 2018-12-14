@@ -92,11 +92,10 @@ class ${componentName} extends React.Component<
 }
 
 export default ${componentName};
-
 `
 
 const container = (componentName) =>
-  ` import { MapStateToPropsParam, MapDispatchToPropsParam, connect } from "react-redux";
+  `import { MapStateToPropsParam, MapDispatchToPropsParam, connect } from "react-redux";
 import IState from "path-to-redux-state-interface";
 import ${componentName} from "./${componentName}";
 import { I${componentName}Props, I${componentName}DispatchProps, I${componentName}StateProps } from "./I${componentName}Props";
@@ -116,12 +115,10 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(${componentName});
-
 `
 
 const stateInterface = (componentName) =>
   `export interface I${componentName}State {}
-
 `
 
 const propsInterface = (componentName) =>
@@ -130,7 +127,6 @@ const propsInterface = (componentName) =>
 export interface I${componentName}StateProps {}
 
 export interface I${componentName}DispatchProps {}
-
 `
 
 const styles = (componentName) =>

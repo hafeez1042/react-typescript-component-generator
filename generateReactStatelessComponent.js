@@ -57,12 +57,10 @@ const ${componentName}: React.SFC<I${componentName}Props> = (props) => {
 };
 
 export default ${componentName};
-
 `
 
 const propsInterface = (componentName) =>
   `export interface I${componentName}Props {}
-
 `
 
 const styles = (componentName) =>
