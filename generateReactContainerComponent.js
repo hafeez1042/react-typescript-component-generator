@@ -128,6 +128,10 @@ const propsInterface = (componentName) =>
 export interface I${componentName}StateProps {}
 
 export interface I${componentName}DispatchProps {}
+
+type PropsType = I${componentName}Props & I${componentName}StateProps & I${componentName}DispatchProps;
+
+export default PropsType;
 `
 
 const styles = (componentName) =>
