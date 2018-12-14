@@ -64,7 +64,6 @@ module.exports = (name) => {
 
 const component = (componentName) =>
   `import * as React from 'react';
-import { connect } from 'react-redux';
 import { I${componentName}State } from './I${componentName}State';
 import {
   I${componentName}StateProps,
@@ -73,8 +72,10 @@ import {
 } from './I${componentName}Props';
 import styles from './${componentName}.module.scss';
 
+export propsType = I${componentName}StateProps & I${componentName}DispatchProps & I${componentName}Props;
+
 class ${componentName} extends React.Component<
-  I${componentName}StateProps & I${componentName}DispatchProps & I${componentName}Props,
+  propsType,
   I${componentName}State
   > {
   constructor(props) {
