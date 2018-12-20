@@ -72,7 +72,7 @@ import {
 } from './I${componentName}Props';
 import styles from './${componentName}.module.scss';
 
-export propsType = I${componentName}StateProps & I${componentName}DispatchProps & I${componentName}Props;
+export type propsType = I${componentName}StateProps & I${componentName}DispatchProps & I${componentName}Props;
 
 class ${componentName} extends React.Component<
   propsType,
