@@ -103,7 +103,11 @@ import { I${componentName}Props, I${componentName}DispatchProps, I${componentNam
 import { ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "redux";
 
-const mapStateToProps: MapStateToPropsParam<I${componentName}StateProps, I${componentName}Props> = (state: IState) => {
+const mapStateToProps: MapStateToPropsParam<
+  I${componentName}StateProps,
+  I${componentName}Props,
+  IState
+> = (state: IState) => {
   return {};
 };
 
